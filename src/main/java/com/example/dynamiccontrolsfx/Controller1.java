@@ -1,5 +1,7 @@
 package com.example.dynamiccontrolsfx;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,12 +24,16 @@ public class Controller1 {
     public void outputReaders(ArrayList<Reader> readers)
     {
         boxReaders.getChildren().clear();
-        for (Reader r : readers  ) {
-            //System.out.println(r);
-            Label rlab = new Label(r.toString());
-            Button rbut = new Button("ажми на "+r.fio);
+        for (Reader curReader : readers  ) {
+            //System.out.println(curReader);
+            Label rlab = new Label(curReader.toString());
+
+            Button rbut = new Button("Нажми на "+curReader.fio);
+            rbut.setOnAction(a -> readerButtonClicker(curReader));
             boxReaders.getChildren().add(rlab);
             boxReaders.getChildren().add(rbut);
+
+
         }
     }
     public ArrayList<Reader> generateRandomReaders(int amount)
@@ -39,5 +45,11 @@ public class Controller1 {
             readers.add(reader);
         }
         return readers;
+    }
+
+    public void readerButtonClicker(Reader r)
+    {
+        System.out.println("нажата кнопка для читателя "+r);
+
     }
 }
