@@ -9,6 +9,10 @@ public class Controller1 {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        int amount = 10;
+        for (int i = 0; i < amount; i++) {
+            Reader reader = new Reader();
+            System.out.println(reader);
+        }
     }
 }
